@@ -126,7 +126,8 @@ body.blocklyMinimalBody * {
     margin: 0;
 }*/
 #header {
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    background-color: red;
     border: 0;
     margin: 0;
 }
