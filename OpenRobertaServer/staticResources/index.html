@@ -38,6 +38,24 @@ limitations under the License.
 <meta content='yes' name='mobile-web-app-capable' />
 <meta content='yes' name='apple-mobile-web-app-capable' />
 <title>Open Roberta Lab</title>
+<script>
+  // 모든 터치/마우스 이벤트에 대해 passive: false를 강제하는 몽키 패치
+  (function() {
+    const original = Element.prototype.addEventListener;
+    Element.prototype.addEventListener = function(type, listener, options) {
+      if (['touchstart', 'touchmove', 'mousedown', 'mousemove'].includes(type)) {
+        if (typeof options === 'boolean') {
+          options = { capture: options, passive: false };
+        } else if (typeof options === 'object') {
+          options.passive = false;
+        } else {
+          options = { passive: false };
+        }
+      }
+      original.call(this, type, listener, options);
+    };
+  })();
+</script>
 </head>
 
 <body>
