@@ -4398,3 +4398,20 @@ g.column rect {
 #rcjStartStop.running {
     background-color: #e2001a;
 }
+
+/* chrome 최신버전 블록 드래그 불가 방지용 CSS */
+.blocklySvg {
+    touch-action: none !important;
+    -ms-touch-action: none !important;
+}
+
+/* 2. 블록을 드래그할 때 생기는 별도 레이어에서도 간섭 제거 */
+.blocklyDragSurface {
+    touch-action: none !important;
+    pointer-events: none !important; /* 드래그 중인 블록이 마우스 이벤트를 가로막지 않도록 */
+}
+
+/* 3. 개별 드래그 가능 요소에 명시적 설정 */
+.blocklyDraggable {
+    touch-action: none !important;
+}
